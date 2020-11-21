@@ -13,7 +13,7 @@ provider "null" {
 }
 
 module "static_data" {
-  source = "../modules/static_data"
+  source = "./modules/static_data"
 }
 
 output "name" {
