@@ -3,13 +3,13 @@ terraform {
     organization = "tf_rel_path"
 
     workspaces {
-      name = "tf11"
+      name = "tf12"
     }
   }
 }
 
 provider "null" {
-  version = "~> 2.1"
+  version = "~> 3.0"
 }
 
 module "static_data" {
@@ -17,12 +17,12 @@ module "static_data" {
 }
 
 output "name" {
-  value = "${module.static_data.name}"
+  value = module.static_data.name
 }
 
 resource "null_resource" "bump" {
   triggers = {
-    now = "${timestamp()}"
+    now = timestamp()
   }
   provisioner "local-exec" {
     command = "touch nothing"
