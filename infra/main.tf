@@ -3,7 +3,7 @@ terraform {
     organization = "tf_rel_path"
 
     workspaces {
-      name = "tf12"
+      name = "tf13"
     }
   }
 }
@@ -13,7 +13,7 @@ provider "null" {
 }
 
 module "static_data" {
-  source = "./modules/static_data"
+  source = "../modules/static_data"
 }
 
 output "name" {
