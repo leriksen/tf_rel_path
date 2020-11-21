@@ -5,7 +5,7 @@ terraform {
 }
 
 provider "null" {
-  version = "~> 2.1"
+  version = "~> 3.0"
 }
 
 module "static_data" {
