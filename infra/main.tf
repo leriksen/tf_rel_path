@@ -1,31 +1,27 @@
 terraform {
-  backend "remote" {
-    organization = "tf_rel_path"
-
-    workspaces {
-      name = "tf13"
-    }
+  backend "local" {
+    path = ".terraform.tfstate"
   }
 }
 
 provider "null" {
-  version = "~> 3.0"
+  version = "~> 2.1"
 }
 
 module "static_data" {
-  source = "./modules/static_data"
+  source = "../modules/static_data"
 }
 
 output "name" {
-  value = module.static_data.name
+  value = "${module.static_data.name}"
 }
 
 resource "null_resource" "bump" {
   triggers = {
-    now = timestamp()
+    now = "${timestamp()}"
   }
   provisioner "local-exec" {
-    command = "touch nothing"
+    command = "touch nothing; rm nothing"
   }
 }
 
